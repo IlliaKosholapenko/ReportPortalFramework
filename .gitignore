@@ -1,5 +1,6 @@
 # Default ignored files
-.idea
-target
-test-output
-allure-results
+/test-output/
+/allure-results/
+ReportPortalFramework.iml
+/target/
+/.idea/
