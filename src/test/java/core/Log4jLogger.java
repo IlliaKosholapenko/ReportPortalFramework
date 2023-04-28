@@ -1,50 +1,28 @@
 package core;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+import lombok.extern.slf4j.Slf4j;
 
-public class Log4jLogger {
-    static final Logger logger = Logger.getLogger(Log4jLogger.class);
+
+@Slf4j
+public class Log4jLogger implements ILogger {
 
     public static void main(String[] args) {
     }
 
-    public static synchronized void info(Object message) {
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setThreshold(Level.INFO);
-        consoleAppender.setLayout(new PatternLayout("%d %p  %C{1} - %m%n"));
-        consoleAppender.activateOptions();
-        Logger.getRootLogger().addAppender(consoleAppender);
-        logger.info(message);
+    public void info(String message) {
+        log.info(message);
     }
 
-    public static synchronized void error(Object message) {
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setThreshold(Level.ERROR);
-        consoleAppender.setLayout(new PatternLayout("%d %p  %C{1} - %m%n"));
-        consoleAppender.activateOptions();
-        Logger.getRootLogger().addAppender(consoleAppender);
-        logger.error(message);
+    public void error(String message) {
+        log.error(message);
     }
 
-    public static synchronized void warn(Object message) {
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setThreshold(Level.WARN);
-        consoleAppender.setLayout(new PatternLayout("%d %p  %C{1} - %m%n"));
-        consoleAppender.activateOptions();
-        Logger.getRootLogger().addAppender(consoleAppender);
-        logger.warn(message);
+    public void warn(String message) {
+        log.warn(message);
     }
 
-    public static synchronized void debug(String message) {
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setThreshold(Level.DEBUG);
-        consoleAppender.setLayout(new PatternLayout("%d %p  %C{1} - %m%n"));
-        consoleAppender.activateOptions();
-        Logger.getRootLogger().addAppender(consoleAppender);
-        logger.debug(message);
+    public void debug(String message) {
+        log.debug(message);
     }
 
 }

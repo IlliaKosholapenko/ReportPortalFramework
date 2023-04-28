@@ -9,14 +9,17 @@ import java.util.Properties;
 public class Config {
     public static Properties properties;
     private static String configPath = "src/test/resources/config/reportPortal.properties";
+    public static ILogger logger = new Log4jLogger();
+    public static IReporter reporter = AllureReporter.getInstance();
 
     public static void initFile() {
         properties = new Properties();
         try {
-            Log4jLogger.info("Trying to load config file");
+            logger.info("Trying to load config file");
+            reporter.reportLog("Trying to load config file");
             InputStream inputFile = new FileInputStream(configPath);
             properties.load(inputFile);
-            Log4jLogger.info(String.format("Config File: %s is successfully loaded", configPath));
+            logger.info(String.format("Config File: %s is successfully loaded", configPath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
