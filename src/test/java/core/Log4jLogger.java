@@ -6,9 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Log4jLogger implements ILogger {
 
-    public static void main(String[] args) {
-    }
-
     public void info(String message) {
         log.info(message);
     }
