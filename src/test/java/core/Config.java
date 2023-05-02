@@ -1,5 +1,9 @@
 package core;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +17,7 @@ public class Config {
     public static IReporter reporter = AllureReporter.getInstance();
 
     public static void initFile() {
+        logger.info("Init config file");
         properties = new Properties();
         try {
             logger.info("Trying to load config file");
@@ -24,6 +29,18 @@ public class Config {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static WebDriver initDriver(){
+        logger.info("Init browser driver");
+        String driverName = Config.properties.getProperty("browserName");
+        if (driverName.equalsIgnoreCase("edge")) {
+            System.setProperty("webdriver.msedge.driver", "src/test/resources/drivers/msedgedriver.exe");
+            return new EdgeDriver();
+        } else {
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+            return new ChromeDriver();
         }
     }
 
