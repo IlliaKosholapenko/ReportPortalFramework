@@ -1,18 +1,18 @@
 package business;
 
 import core.Config;
+import core.Properties;
 import org.testng.annotations.Test;
 
 import static core.Config.logger;
 
-public class CommonSteps {
+public class CommonTests {
     @Test
     public void iInvokeLoginPageByUrl() {
         logger.info("test starts");
         logger.info("Init config file");
         Config.initFile();
-        String url = Config.properties.getProperty("login.url");
-        System.out.println("I run test with url " + url);
+        String url = Properties.LOGIN_URL;
         logger.info("All ok");
     }
 }
