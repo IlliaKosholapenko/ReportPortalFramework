@@ -1,4 +1,4 @@
-package core.pages;
+package business.pages;
 
 import core.Config;
 import org.openqa.selenium.By;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Locale;
 
-import static business.CommonSteps.driver;
+import static tests.CommonTests.driver;
 import static core.Config.logger;
 
 public abstract class BasePage {
@@ -18,8 +18,10 @@ public abstract class BasePage {
         switch (identifier) {
             case LoginPage.PAGE_IDENTIFIER:
                 driver.get(new LoginPage().getPageUrl());
+                break;
             case LaunchesPage.PAGE_IDENTIFIER:
                 driver.get(new LaunchesPage().getPageUrl());
+                break;
         }
     }
 
@@ -34,7 +36,7 @@ public abstract class BasePage {
 
     public void waitUntilPageLoaded(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.urlToBe(String.format(this.getPageUrl(), Config.properties.getProperty("projectname"))));
+                .until(ExpectedConditions.urlContains(String.format(this.getPageUrl(), Config.properties.getProperty("projectname"))));
     }
 
     protected abstract String getPageUrl();

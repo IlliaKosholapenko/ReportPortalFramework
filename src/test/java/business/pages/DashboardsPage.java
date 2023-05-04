@@ -1,4 +1,4 @@
-package core.pages;
+package business.pages;
 
 import lombok.Getter;
 

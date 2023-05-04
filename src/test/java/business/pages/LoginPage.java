@@ -1,11 +1,10 @@
-package core.pages;
+package business.pages;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static business.CommonSteps.driver;
+import static tests.CommonTests.driver;
 import static core.Config.logger;
 
 @Getter
